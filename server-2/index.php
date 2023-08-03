@@ -1,0 +1,1 @@
+<h1>Servidor 2: Versão do PHP <?= phpversion() ?></h1>
