@@ -4,13 +4,13 @@ services:
     image: "php:8.2-apache"
     volumes:
       - ./server-1:/var/www/html
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.server-1.rule=Host(`teste-1.localhost`) || Host(`www.teste-1.localhost`)"
+      - "traefik.http.routers.server-1.entrypoints=websecure"
+      - "traefik.http.routers.server-1.tls=true"
+      - "traefik.http.routers.server-1.tls.certresolver=defaultresolver"
     deploy:
-      labels:
-        - "traefik.enable=true"
-        - "traefik.http.routers.server-1.rule=Host(`teste-1.localhost`) || Host(`www.teste-1.localhost`)"
-        - "traefik.http.routers.server-1.entrypoints=websecure"
-        - "traefik.http.routers.server-1.tls=true"
-        - "traefik.http.routers.server-1.tls.certresolver=defaultresolver"
       resources:
         limits:
           cpus: "0.25"
@@ -22,13 +22,13 @@ services:
     image: "php:8.2-apache"
     volumes:
       - ./server-2:/var/www/html
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.server-2.rule=Host(`teste-2.localhost`) || Host(`www.teste-2.localhost`)"
+      - "traefik.http.routers.server-2.entrypoints=websecure"
+      - "traefik.http.routers.server-2.tls=true"
+      - "traefik.http.routers.server-2.tls.certresolver=defaultresolver"
     deploy:
-      labels:
-        - "traefik.enable=true"
-        - "traefik.http.routers.server-2.rule=Host(`teste-2.localhost`) || Host(`www.teste-2.localhost`)"
-        - "traefik.http.routers.server-2.entrypoints=websecure"
-        - "traefik.http.routers.server-2.tls=true"
-        - "traefik.http.routers.server-2.tls.certresolver=defaultresolver"
       resources:
         limits:
           cpus: "0.25"
